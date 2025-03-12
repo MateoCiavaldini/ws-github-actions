@@ -31,31 +31,32 @@ jobs:
             echo "Everything is good ! Keep on coding !"
             exit 0
 
-    compile:
-        runs-on: ubuntu-latest
-        steps:
 
-          - name: Checkout Repository
-            uses: actions/checkout@v4
-
-          - name: Compile Project
-            run: make
-
-    run-tests:
+  compile:
       runs-on: ubuntu-latest
-      container:
-        image: ghcr.io/epitech/epitech-docker:latest
-      needs: [compile, coding-style]
       steps:
 
         - name: Checkout Repository
           uses: actions/checkout@v4
 
-        - name: Compile tests 
-          run: make compile_tests
+        - name : Compile Project
+          run: make
 
-        - name: Run Unit Tests 
-          run: ./unit_testing
+  run-tests:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/epitech/epitech-docker:latest
+    needs: [compile, coding-style]
+    steps:
 
-        - name: Run Integration Tests
-          run: ./integration_testing
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Compile tests 
+        run: make compile_tests
+
+      - name: Run Unit Tests 
+        run: ./unit_testing
+
+      - name: Run Integration Tests
+        run: ./integration_testing
