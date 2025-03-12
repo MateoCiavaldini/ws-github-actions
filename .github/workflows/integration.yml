@@ -38,7 +38,7 @@ jobs:
           - name: Checkout Repository
             uses: actions/checkout@v4
 
-          - name : Compile Project
+          - name: Compile Project
             run: make
 
     run-tests:
