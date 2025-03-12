@@ -45,7 +45,7 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/epitech/epitech-docker:latest
+      image: epitechcontent/epitech-docker:latest
     needs: [compile, coding-style]
     steps:
 
